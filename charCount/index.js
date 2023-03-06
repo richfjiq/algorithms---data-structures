@@ -3,11 +3,15 @@ const charCount = (str) => {
     .toLowerCase()
     .split('')
     .reduce((acc, curr) => {
-      if (!acc[curr] && /[a-z]/g.test(curr)) {
-        acc[curr] = 1;
-      } else if (acc[curr] && /[a-z]/g.test(curr)) {
-        acc[curr]++;
+      const code = curr.charCodeAt(0);
+
+      if ((code > 47 && code < 58) || (code > 96 && code < 123)) {
+        acc[curr] = ++acc[curr] || 1;
       }
+
+      // if (/[\w]/g.test(curr)) {
+      //   acc[curr] = ++acc[curr] || 1;
+      // }
 
       return acc;
     }, {});
