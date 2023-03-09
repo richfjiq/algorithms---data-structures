@@ -21,9 +21,6 @@ const sameFrequency = (a, b) => {
   }
 
   for (let key in frequencyCounter1) {
-    if (!(key in frequencyCounter2)) {
-      return false;
-    }
     if (frequencyCounter1[key] !== frequencyCounter2[key]) {
       return false;
     }
