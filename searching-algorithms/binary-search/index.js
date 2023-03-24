@@ -8,6 +8,7 @@
 // and here - https://www.topcoder.com/community/data-science/data-science-tutorials/binary-search/
 
 const binarySearch = (arr, n) => {
+  // ++++++++++ O(log n)
   let start = 0;
   let end = arr.length - 1;
   let middle = Math.floor((end + start) / 2);
