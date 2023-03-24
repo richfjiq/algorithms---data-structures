@@ -4,7 +4,7 @@
 // array, return -1.
 
 const linearSearch = (arr, n) => {
-  // +++++++++
+  // +++++++++ O(n)
   // let index = 0;
   // for (let i = 0; i < arr.length; i++) {
   //   if (arr[i] === n) {
@@ -14,7 +14,7 @@ const linearSearch = (arr, n) => {
   // }
   // return index;
 
-  // +++++++++
+  // +++++++++ O(n)
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === n) return i;
   }
