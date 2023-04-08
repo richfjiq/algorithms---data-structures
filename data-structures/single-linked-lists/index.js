@@ -22,6 +22,7 @@ class SinglyLinkedList {
     this.length = 0;
   }
 
+  // Adds a node at beginning
   push(val) {
     const node = new Node(val);
     if (!this.head) {
@@ -35,6 +36,7 @@ class SinglyLinkedList {
     return this;
   }
 
+  // Removes a node at the end
   pop() {
     if (!this.head) return undefined;
 
@@ -55,13 +57,39 @@ class SinglyLinkedList {
     }
     return current;
   }
+
+  // Removes a node at the beginning
+  shift() {
+    if (!this.head) return undefined;
+    const currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return currentHead;
+  }
+
+  // Adds a new node to the beginning of the Linked list
+  unshift(val) {
+    const newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
 list.push('How');
 list.push('are');
 list.push('you?');
-list.pop();
-list.pop();
-list.pop();
+
+console.log(list.unshift('Hi, '));
+
 console.log({ list });
