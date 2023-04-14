@@ -83,13 +83,50 @@ class SinglyLinkedList {
     this.length++;
     return this;
   }
+
+  get(idx) {
+    if (idx < 0 || idx >= this.length) return null;
+
+    let counter = 0;
+    let current = this.head;
+
+    while (counter !== idx) {
+      counter++;
+      current = current.next;
+    }
+
+    return current;
+  }
+
+  set(index, value) {
+    let foundNode = this.get(index);
+
+    if (foundNode) {
+      foundNode.val = value;
+      return true;
+    }
+
+    return false;
+    // if (index < 0 || index >= this.length) return false;
+
+    // let counter = 0;
+    // let current = this.head;
+
+    // while (counter !== index) {
+    //   counter++;
+    //   current = current.next;
+    // }
+
+    // current.val = value;
+    // return true;
+  }
 }
 
 const list = new SinglyLinkedList();
 list.push('How');
 list.push('are');
 list.push('you?');
+list.push("I'm");
+list.push('fine');
 
-console.log(list.unshift('Hi, '));
-
-console.log({ list });
+console.log(list.set(4, 'great!'));
