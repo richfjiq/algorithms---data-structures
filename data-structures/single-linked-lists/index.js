@@ -120,6 +120,52 @@ class SinglyLinkedList {
     // current.val = value;
     // return true;
   }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(value);
+    if (index === 0) return !!this.unshift(value);
+
+    const prev = this.get(index - 1);
+    const newNode = new Node(value);
+    const temp = prev.next;
+    newNode.next = temp;
+    prev.next = newNode;
+    this.length++;
+
+    return true;
+  }
+
+  remove(index) {
+    if (index < 0 || index > this.length) return undefined;
+    if (index === this.length - 1) return this.pop();
+    if (index === 0) return this.shift();
+
+    const prev = this.get(index - 1);
+    const current = prev.next;
+    const temp = current.next;
+    current.next = null;
+    prev.next = temp;
+    this.length--;
+    return current;
+  }
+
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    let next;
+    let prev = null;
+    console.log(this);
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+
+    return this;
+  }
 }
 
 const list = new SinglyLinkedList();
@@ -129,4 +175,7 @@ list.push('you?');
 list.push("I'm");
 list.push('fine');
 
-console.log(list.set(4, 'great!'));
+// console.log(list.set(4, 'great!'));
+// console.log(list.insert(5, ':)'));
+// console.log(list.remove(3));
+console.log(list.reverse());
