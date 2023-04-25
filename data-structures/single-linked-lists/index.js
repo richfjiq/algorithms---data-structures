@@ -15,6 +15,12 @@ class Node {
   }
 }
 
+// +++++++++ Big O of Singly Linked Lists ++++++++++
+// Insertion O(1)
+// Removal It depends - O(1) or O(N)
+// Searching O(N)
+// Access O(N)
+
 class SinglyLinkedList {
   constructor() {
     this.head = null;
@@ -156,7 +162,7 @@ class SinglyLinkedList {
     this.tail = node;
     let next;
     let prev = null;
-    console.log(this);
+
     for (let i = 0; i < this.length; i++) {
       next = node.next;
       node.next = prev;
