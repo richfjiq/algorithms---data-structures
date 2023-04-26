@@ -80,15 +80,53 @@ class DoublyLinkedList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+
+    let count = 0;
+    let current = this.head;
+
+    // Optimal version
+    if (index < this.length / 2) {
+      while (count != index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      count = this.length - 1;
+      current = this.tail;
+      while (count !== index) {
+        current = current.prev;
+        count--;
+      }
+    }
+    return current;
+  }
+
+  set(index, val) {
+    const foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 const list = new DoublyLinkedList();
 list.push(99);
 list.push(100);
 list.push('last item');
+list.push('second');
+list.push(250);
+list.push(350);
+list.push('starter');
+
 // const popNode = list.pop();
 // console.log(popNode);
 // const shiftedNode = list.shift();
 // console.log(shiftedNode);
-list.unshift('new node');
-console.log(list);
+// list.unshift('new node');
+console.log(list.set(2, 1));
+console.log(list.get(2));
